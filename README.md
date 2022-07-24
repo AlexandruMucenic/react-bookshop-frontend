@@ -1,4 +1,8 @@
-Tech Stack:
+Nume / Prenume: Mucenic Alexandru-Marian
+
+Titlu proiect: Bookshop.org
+
+Tehnolgii utilizate:
 
 ##Front-end
 - HTML

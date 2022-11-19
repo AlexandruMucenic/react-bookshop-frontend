@@ -39,7 +39,7 @@
 }
 
 .productHeaderQuote > p {
-  text-wrap: normal;
+  word-wrap: normal;
   font-style: italic;
   letter-spacing: 1px;
 }

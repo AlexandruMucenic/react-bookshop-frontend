@@ -19,7 +19,9 @@ const Header = () => {
     <header className="headerContainer">
       {/*Logo*/}
       <div className="logoContainer">
-        <img className="logo" alt="bookshop.org" src={Logo} />
+        <Link to="/">
+          <img className="logo" alt="bookshop.org" src={Logo} />
+        </Link>
       </div>
 
       {/*Navbar*/}

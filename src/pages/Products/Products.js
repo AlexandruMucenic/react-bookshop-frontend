@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard/ProductCard'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import DropDownMenu from '../../components/DropDownMenu/DropDownMenu'
 import Cart from '../../components/Cart/Cart'
+import { productsURL, cartURL } from '../../components/urls'
 
 const Products = () => {
   const [products, setProducts] = useState([])
@@ -15,7 +16,7 @@ const Products = () => {
 
   //GET products method
   useEffect(() => {
-    fetch(`http://localhost:5000/products`, {
+    fetch(productsURL, {
       method: 'GET',
     })
       .then(response => response.json())
@@ -27,7 +28,7 @@ const Products = () => {
 
   //Add to cart function
   const handleAddToCart = async (id, author, title, price, imageURL, quantity) => {
-    await fetch(`http://localhost:5000/cart/${id}/add`, {
+    await fetch(`${cartURL}/${id}/add`, {
       method: 'PUT',
       body: JSON.stringify({
         id: id,

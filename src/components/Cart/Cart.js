@@ -2,13 +2,14 @@ import ReactDom from 'react-dom'
 import React, { useCallback, useEffect, useState } from 'react'
 import './Cart.css'
 import BagProductCard from '../BagProductCard/BagProductCard'
+import { cartURL } from '../urls'
 import { FaTimes } from 'react-icons/fa'
 
 const Cart = ({ addedToCart, showCart, handleClose }) => {
   const [cartProducts, setCartProducts] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/cart`, {
+    fetch(cartURL, {
       method: 'GET',
     })
       .then(response => response.json())
@@ -22,7 +23,7 @@ const Cart = ({ addedToCart, showCart, handleClose }) => {
   }, 0)
 
   const deleteProduct = useCallback(async id => {
-    await fetch(`http://localhost:5000/cart/${id}/delete`, {
+    await fetch(`${cartURL}/${id}/delete`, {
       method: 'DELETE',
       body: JSON.stringify({
         id: id,
@@ -36,7 +37,7 @@ const Cart = ({ addedToCart, showCart, handleClose }) => {
   }, [])
 
   const incrementQuantity = useCallback(async id => {
-    await fetch(`http://localhost:5000/cart/${id}/increaseQuantity`, {
+    await fetch(`${cartURL}/${id}/increaseQuantity`, {
       method: 'PUT',
       body: JSON.stringify({
         id: id,
@@ -50,7 +51,7 @@ const Cart = ({ addedToCart, showCart, handleClose }) => {
   }, [])
 
   const decrementQuantity = useCallback(async id => {
-    await fetch(`http://localhost:5000/cart/${id}/decreaseQuantity`, {
+    await fetch(`${cartURL}/${id}/decreaseQuantity`, {
       method: 'PUT',
       body: JSON.stringify({
         id: id,

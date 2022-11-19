@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fdc2b0f1.css",
+    "main.js": "/static/js/main.bc72f020.js",
+    "static/media/the-old-man-and-the-sea.jpg": "/static/media/the-old-man-and-the-sea.805ebd183be6031d1635.jpg",
+    "static/media/war-and-peace.jpg": "/static/media/war-and-peace.2ec451d92a421d1d2161.jpg",
+    "static/media/middlemarch.jpg": "/static/media/middlemarch.8776b1a3671bddfe5d94.jpg",
+    "static/media/faust.jpg": "/static/media/faust.95fd82bc5c7b59816656.jpg",
+    "static/media/CarouselOne.jpg": "/static/media/CarouselOne.047f2d77f1e191d82170.jpg",
+    "static/media/dead-souls.jpg": "/static/media/dead-souls.a46a8e01f686e019298d.jpg",
+    "static/media/ulysses.jpg": "/static/media/ulysses.b3432674cceb4ad3ec01.jpg",
+    "static/media/the-brothers-karamazov.jpg": "/static/media/the-brothers-karamazov.8190dc8924ad8a144f8d.jpg",
+    "static/media/Dostoevsky.jpg": "/static/media/Dostoevsky.af3934bfe7a8384e08b2.jpg",
+    "static/media/crime-and-punishment.jpg": "/static/media/crime-and-punishment.e612f862b53e473cb0ab.jpg",
+    "static/media/hamlet.jpg": "/static/media/hamlet.5707ffbf253ac5a434cb.jpg",
+    "static/media/CarouselTwo.jpg": "/static/media/CarouselTwo.758d510c3917b0eec2de.jpg",
+    "static/media/CarouselThree.jpg": "/static/media/CarouselThree.3d239acbc036a7789248.jpg",
+    "static/media/lolita.jpg": "/static/media/lolita.f3c50fa9318b57f82c4b.jpg",
+    "static/media/pride-and-prejudice.jpg": "/static/media/pride-and-prejudice.956d69b9fcb9a63c1815.jpg",
+    "static/media/nineteen-eighty-four.jpg": "/static/media/nineteen-eighty-four.3fdec2e053fec47ca64a.jpg",
+    "static/media/the-divine-comedy.jpg": "/static/media/the-divine-comedy.2e25df2b4f543b59ca7d.jpg",
+    "static/media/don-quijote-de-la-mancha.jpg": "/static/media/don-quijote-de-la-mancha.4cf4063ae74da8886261.jpg",
+    "static/media/the-adventures-of-huckleberry-finn.jpg": "/static/media/the-adventures-of-huckleberry-finn.155982126b2ff92ac54a.jpg",
+    "static/media/the-trial.jpg": "/static/media/the-trial.7bc080edd5e26bfcaec5.jpg",
+    "static/media/logo.svg": "/static/media/logo.8e58b4b7f537b48b399c4de4437f663e.svg",
+    "index.html": "/index.html",
+    "static/media/ShoppingBag.svg": "/static/media/ShoppingBag.609527e2d7559c7aae1a75bef517d386.svg",
+    "main.fdc2b0f1.css.map": "/static/css/main.fdc2b0f1.css.map",
+    "main.bc72f020.js.map": "/static/js/main.bc72f020.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fdc2b0f1.css",
+    "static/js/main.bc72f020.js"
+  ]
+}

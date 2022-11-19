@@ -5,12 +5,14 @@ Titlu proiect: Bookshop.org
 Tehnolgii utilizate:
 
 ##Front-end
+
 - HTML
 - CSS
 - React.js
-- React Router 
+- React Router
 
 ##Back-end
+
 - Node.js
 - Express.js
 - Mongoose

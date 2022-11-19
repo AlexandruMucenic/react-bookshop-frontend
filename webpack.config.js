@@ -1,32 +1,33 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
-  mode: "production", // "production" | "development" | "none"
+  mode: 'production', // "production" | "development" | "none"
   // Chosen mode tells webpack to use its built-in optimizations accordingly.
-  entry: "./app/entry", // string | object | array
+  entry: './app/entry', // string | object | array
   // defaults to ./src
   // Here the application starts executing
   // and webpack starts bundling
   output: {
     // options related to how webpack emits results
-    path:path.resolve(__dirname, "dist"), // string (default)
+    path: path.resolve(__dirname, 'dist'), // string (default)
     // the target directory for all output files
     // must be an absolute path (use the Node.js path module)
-    filename: "[name].js", // string (default)
+    filename: '[name].js', // string (default)
     // the filename template for entry chunks
-    publicPath: "/assets/", // string
+    publicPath: '/assets/', // string
     // the url to the output directory resolved relative to the HTML page
-    library: { // There is also an old syntax for this available (click to show)
-      type: "umd", // universal module definition
+    library: {
+      // There is also an old syntax for this available (click to show)
+      type: 'umd', // universal module definition
       // the type of the exported library
-      name: "MyLibrary", // string | string[]
+      name: 'MyLibrary', // string | string[]
       // the name of the exported library
 
       /* Advanced output.library configuration (click to show) */
     },
-    uniqueName: "my-application", // (defaults to package.json "name")
+    uniqueName: 'my-application', // (defaults to package.json "name")
     // unique name for this build to avoid conflicts with other builds in the same HTML
-    name: "my-config",
+    name: 'my-config',
     // name of the configuration, shown in output
     /* Advanced output configuration (click to show) */
     /* Expert output configuration 1 (on own risk) */
@@ -39,12 +40,8 @@ module.exports = {
       {
         // Conditions:
         test: /\.jsx?$/,
-        include: [
-          path.resolve(__dirname, "app")
-        ],
-        exclude: [
-          path.resolve(__dirname, "app/demo-files")
-        ],
+        include: [path.resolve(__dirname, 'app')],
+        exclude: [path.resolve(__dirname, 'app/demo-files')],
         // these are matching conditions, each accepting a regular expression or string
         // test and include have the same behavior, both must be matched
         // exclude must not be matched (takes preferrence over test and include)
@@ -55,46 +52,46 @@ module.exports = {
         // Each condition can also receive an object with "and", "or" or "not" properties
         // which are an array of conditions.
         issuer: /\.css$/,
-        issuer: path.resolve(__dirname, "app"),
-        issuer: { and: [ /\.css$/, path.resolve(__dirname, "app") ] },
-        issuer: { or: [ /\.css$/, path.resolve(__dirname, "app") ] },
-        issuer: { not: [ /\.css$/ ] },
-        issuer: [ /\.css$/, path.resolve(__dirname, "app") ], // like "or"
+        issuer: path.resolve(__dirname, 'app'),
+        issuer: { and: [/\.css$/, path.resolve(__dirname, 'app')] },
+        issuer: { or: [/\.css$/, path.resolve(__dirname, 'app')] },
+        issuer: { not: [/\.css$/] },
+        issuer: [/\.css$/, path.resolve(__dirname, 'app')], // like "or"
         // conditions for the issuer (the origin of the import)
         /* Advanced conditions (click to show) */
 
         // Actions:
-        loader: "babel-loader",
+        loader: 'babel-loader',
         // the loader which should be applied, it'll be resolved relative to the context
         options: {
-          presets: ["es2015"]
+          presets: ['es2015'],
         },
         // options for the loader
         use: [
           // apply multiple loaders and options instead
-          "htmllint-loader",
+          'htmllint-loader',
           {
-            loader: "html-loader",
+            loader: 'html-loader',
             options: {
               // ...
-            }
-          }
+            },
+          },
         ],
-        type: "javascript/auto",
+        type: 'javascript/auto',
         // specifies the module type
         /* Advanced actions (click to show) */
       },
       {
         oneOf: [
           // ... (rules)
-        ]
+        ],
         // only use one of these nested rules
       },
       {
         // ... (conditions)
         rules: [
           // ... (rules)
-        ]
+        ],
         // use all of these nested rules (combine with conditions to be useful)
       },
     ],
@@ -103,22 +100,22 @@ module.exports = {
   resolve: {
     // options for resolving module requests
     // (does not apply to resolving of loaders)
-    modules: ["node_modules",path.resolve(__dirname, "app")],
+    modules: ['node_modules', path.resolve(__dirname, 'app')],
     // directories where to look for modules (in order)
-    extensions: [".js", ".json", ".jsx", ".css"],
+    extensions: ['.js', '.json', '.jsx', '.css'],
     // extensions that are used
     alias: {
       // a list of module name aliases
       // aliases are imported relative to the current context
-      "module": "new-module",
+      module: 'new-module',
       // alias "module" -> "new-module" and "module/path/file" -> "new-module/path/file"
-      "only-module$": "new-module",
+      'only-module$': 'new-module',
       // alias "only-module" -> "new-module", but not "only-module/path/file" -> "new-module/path/file"
-      "module": path.resolve(__dirname, "app/third/module.js"),
+      module: path.resolve(__dirname, 'app/third/module.js'),
       // alias "module" -> "./app/third/module.js" and "module/file" results in error
-      "module": path.resolve(__dirname, "app/third"),
+      module: path.resolve(__dirname, 'app/third'),
       // alias "module" -> "./app/third" and "module/file" -> "./app/third/file"
-      [path.resolve(__dirname, "app/module.js")]: path.resolve(__dirname, "app/alternative-module.js"),
+      [path.resolve(__dirname, 'app/module.js')]: path.resolve(__dirname, 'app/alternative-module.js'),
       // alias "./app/module.js" -> "./app/alternative-module.js"
     },
     /* Alternative alias syntax (click to show) */
@@ -126,36 +123,38 @@ module.exports = {
     /* Expert resolve configuration (click to show) */
   },
   performance: {
-    hints: "warning", // enum
+    hints: 'warning', // enum
     maxAssetSize: 200000, // int (in bytes),
     maxEntrypointSize: 400000, // int (in bytes)
-    assetFilter: function(assetFilename) {
+    assetFilter: function (assetFilename) {
       // Function predicate that provides asset filenames
-      return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
-    }
+      return assetFilename.endsWith('.css') || assetFilename.endsWith('.js')
+    },
   },
-  devtool: "source-map", // enum
+  devtool: 'source-map', // enum
   // enhance debugging by adding meta info for the browser devtools
   // source-map most detailed at the expense of build speed.
   context: __dirname, // string (absolute path!)
   // the home directory for webpack
   // the entry and module.rules.loader option
   //   is resolved relative to this directory
-  target: "web", // enum
+  target: 'web', // enum
   // the environment in which the bundle should run
   // changes chunk loading behavior, available external modules
   // and generated code style
-  externals: ["react", /^@angular/],
+  externals: ['react', /^@angular/],
   // Don't follow/bundle these modules, but request them at runtime from the environment
-  externalsType: "var", // (defaults to output.library.type)
+  externalsType: 'var', // (defaults to output.library.type)
   // Type of externals, when not specified inline in externals
-  externalsPresets: { /* ... */ },
+  externalsPresets: {
+    /* ... */
+  },
   // presets of externals
   ignoreWarnings: [/warning/],
-  stats: "errors-only",
+  stats: 'errors-only',
   stats: {
     // lets you precisely control what bundle information gets displayed
-    preset: "errors-only",
+    preset: 'errors-only',
     // A stats preset
 
     /* Advanced global settings (click to show) */
@@ -225,8 +224,9 @@ module.exports = {
     // show build hash in summary
   },
   devServer: {
-    proxy: { // proxy URLs to backend development server
-      '/api': 'http://localhost:3000'
+    proxy: {
+      // proxy URLs to backend development server
+      '/api': 'http://localhost:3000',
     },
     static: path.join(__dirname, 'public'), // boolean | string | array | object, static file location
     compress: true, // enable gzip compression
@@ -250,41 +250,43 @@ module.exports = {
   ],
   // list of additional plugins
   optimization: {
-    chunkIds: "size",
+    chunkIds: 'size',
     // method of generating ids for chunks
-    moduleIds: "size",
+    moduleIds: 'size',
     // method of generating ids for modules
-    mangleExports: "size",
+    mangleExports: 'size',
     // rename export names to shorter names
     minimize: true,
     // minimize the output files
-    minimizer: [new CssMinimizer(), "..."],
+    minimizer: [new CssMinimizer(), '...'],
     // minimizers to use for the output files
 
     /* Advanced optimizations (click to show) */
 
     splitChunks: {
       cacheGroups: {
-        "my-name": {
+        'my-name': {
           // define groups of modules with specific
           // caching behavior
           test: /\.sass$/,
-          type: "css/mini-extract",
+          type: 'css/mini-extract',
 
           /* Advanced selectors (click to show) */
 
           /* Advanced effects (click to show) */
-        }
+        },
       },
 
-      fallbackCacheGroup: { /* Advanced (click to show) */ }
+      fallbackCacheGroup: {
+        /* Advanced (click to show) */
+      },
 
       /* Advanced selectors (click to show) */
 
       /* Advanced effects (click to show) */
 
       /* Expert settings (click to show) */
-    }
+    },
   },
   /* Advanced configuration (click to show) */
   /* Advanced caching configuration (click to show) */

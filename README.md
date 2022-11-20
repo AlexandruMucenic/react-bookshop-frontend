@@ -1,18 +1,10 @@
-Nume / Prenume: Mucenic Alexandru-Marian
+# bookshop project frontend 
+Netlify link - https://amucenic-bookshop.netlify.app/
 
-Titlu proiect: Bookshop.org
-
-Tehnolgii utilizate:
-
-##Front-end
-
+Tehnologies used:  
 - HTML
 - CSS
 - React.js
 - React Router
 
-##Back-end
-
-- Node.js
-- Express.js
-- Mongoose
+Client side of the bookshop app, consists of two main pages: home and products. Users can search throught the available books, add/remove them from cart and increase the number of items in cart. 

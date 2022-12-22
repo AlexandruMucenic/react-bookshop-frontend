@@ -1,3 +1,3 @@
-export const productsURL = 'https://web-production-3d39.up.railway.app/products'
+export const productsURL = 'https://react-bookshop-backend.onrender.com/products'
 
-export const cartURL = 'https://web-production-3d39.up.railway.app/cart'
+export const cartURL = 'https://react-bookshop-backend.onrender.com/cart'

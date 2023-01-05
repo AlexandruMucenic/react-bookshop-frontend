@@ -1,7 +1,7 @@
 # bookshop project frontend 
 Netlify link - https://amucenic-bookshop.netlify.app/
 
-Tehnologies used:  
+Technologies used:  
 - HTML
 - CSS
 - React.js

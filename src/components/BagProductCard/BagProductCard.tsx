@@ -1,6 +1,18 @@
 import './BagProductCard.css'
 
-const BagProductCard = ({
+interface BagProductCardProps {
+  id?: string
+  author: string
+  title: string
+  imageURL: string
+  price: number
+  quantity: number
+  deleteProduct: () => void
+  incrementQuantity: () => void
+  decrementQuantity: () => void
+}
+
+const BagProductCard: React.FC<BagProductCardProps> = ({
   id,
   author,
   title,

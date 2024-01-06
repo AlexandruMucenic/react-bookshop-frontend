@@ -4,11 +4,13 @@ import CarouselOne from '../../images/carousel/CarouselOne.jpg'
 import CarouselTwo from '../../images/carousel/CarouselTwo.jpg'
 import CarouselThree from '../../images/carousel/CarouselThree.jpg'
 
-const Carousel = () => {
+const Carousel: React.FC = () => {
   const carouselImages = [CarouselOne, CarouselTwo, CarouselThree]
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState<number>(0)
   const delay = 2500
-  const timeoutRef = useRef(null)
+
+  // Specify the type for the ref as NodeJS.Timeout (for Node.js timers) or number (for browser timers)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   function resetTimeout() {
     if (timeoutRef.current) {
@@ -21,7 +23,8 @@ const Carousel = () => {
     timeoutRef.current = setTimeout(
       () => setIndex(prevIndex => (prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1)),
       delay
-    )
+    ) as unknown as NodeJS.Timeout
+
     return () => {
       resetTimeout()
     }

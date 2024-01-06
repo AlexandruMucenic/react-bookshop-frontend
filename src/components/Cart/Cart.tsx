@@ -1,67 +1,82 @@
-import ReactDom from 'react-dom'
 import React, { useCallback, useEffect, useState } from 'react'
+import ReactDom from 'react-dom'
+import { FaTimes } from 'react-icons/fa'
 import './Cart.css'
 import BagProductCard from '../BagProductCard/BagProductCard'
 import { cartURL } from '../urls'
-import { FaTimes } from 'react-icons/fa'
 
-const Cart = ({ addedToCart, showCart, handleClose }) => {
-  const [cartProducts, setCartProducts] = useState([])
+interface CartProps {
+  addedToCart?: (id: string, author: string, title: string, price: number, imageURL: string, quantity: number) => void
+  showCart?: boolean
+  handleClose?: () => void
+}
+
+interface CartProduct {
+  id: string
+  title: string
+  author: string
+  imageURL: string
+  price: number
+  quantity: number
+}
+
+const Cart: React.FC<CartProps> = ({ addedToCart, showCart, handleClose }) => {
+  const [cartProducts, setCartProducts] = useState<CartProduct[]>([])
 
   useEffect(() => {
     fetch(cartURL, {
       method: 'GET',
     })
       .then(response => response.json())
-      .then(data => setCartProducts(data))
+      .then((data: CartProduct[]) => setCartProducts(data))
       .catch(error => console.log(error))
   }, [addedToCart])
 
-  const totalCart = cartProducts?.reduce((sum, product) => {
+  const totalCart = cartProducts.reduce((sum, product) => {
     sum += product.quantity * product.price
     return sum
   }, 0)
 
-  const deleteProduct = useCallback(async id => {
+  const deleteProduct = useCallback(async (id: string) => {
     await fetch(`${cartURL}/${id}/delete`, {
       method: 'DELETE',
       body: JSON.stringify({
-        id: id,
+        id,
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
     })
       .then(res => res.json())
-      .then(data => setCartProducts(data))
+      .then((data: CartProduct[]) => setCartProducts(data))
   }, [])
 
-  const incrementQuantity = useCallback(async id => {
+  const incrementQuantity = useCallback(async (id: string) => {
     await fetch(`${cartURL}/${id}/increaseQuantity`, {
       method: 'PUT',
       body: JSON.stringify({
-        id: id,
+        id,
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
     })
       .then(res => res.json())
-      .then(data => setCartProducts(data))
+      .then((data: CartProduct[]) => setCartProducts(data))
   }, [])
 
-  const decrementQuantity = useCallback(async id => {
+  const decrementQuantity = useCallback(async (id: string) => {
     await fetch(`${cartURL}/${id}/decreaseQuantity`, {
       method: 'PUT',
       body: JSON.stringify({
-        id: id,
+        id,
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
     })
       .then(res => res.json())
-      .then(data => setCartProducts(data))
+      .then((data: CartProduct[]) => setCartProducts(data))
   }, [])
 
   if (!showCart) {
@@ -71,15 +86,15 @@ const Cart = ({ addedToCart, showCart, handleClose }) => {
   return ReactDom.createPortal(
     <div className="blurBackground">
       <div className="cartContainer">
-        {/*Cart Header*/}
+        {/* Cart Header */}
         <div className="cartHeader">
           <h3 className="cartTitle">Your Cart</h3>
           <FaTimes className="closeCartBtn" onClick={handleClose} />
         </div>
 
-        {/*Cart Body*/}
+        {/* Cart Body */}
         <div className="cartBody">
-          {cartProducts?.map(product => (
+          {cartProducts.map(product => (
             <BagProductCard
               key={product.id}
               id={product.id}
@@ -95,14 +110,14 @@ const Cart = ({ addedToCart, showCart, handleClose }) => {
           ))}
         </div>
 
-        {/*Cart Footer*/}
+        {/* Cart Footer */}
         <div className="cartFooter">
           <h4>Total:</h4>
           <p>${totalCart}</p>
         </div>
       </div>
     </div>,
-    document.getElementById('portal')
+    document.getElementById('portal')!
   )
 }
 

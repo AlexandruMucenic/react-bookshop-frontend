@@ -1,10 +1,11 @@
+import React from 'react'
 import { FaFacebook, FaGoodreads, FaInstagram } from 'react-icons/fa'
 import './Footer.css'
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <footer className="footerContainer">
-      {/*Details*/}
+      {/* Details */}
       <div className="textContainer">
         <div className="detailsContainer">
           <h4>Address</h4>
@@ -16,12 +17,12 @@ const Footer = () => {
           <p>Email: info@mysite.com</p>
         </div>
         <div className="detailsContainer">
-          <h4> Open Hours</h4>
-          <p>Mon - Fri : 10am - 7pm</p>
+          <h4>Open Hours</h4>
+          <p>Mon - Fri: 10am - 7pm</p>
         </div>
       </div>
 
-      {/*Copyright & Icons*/}
+      {/* Copyright & Icons */}
       <div className="copyrightContainer">
         <p>© 2023 Proudly created by Mius</p>
         <div className="iconContainer">

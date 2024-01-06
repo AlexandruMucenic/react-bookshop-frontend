@@ -3,7 +3,7 @@ import './HomePage.css'
 import Carousel from '../../components/Carousel/Carousel'
 import Dostoevsky from '../../images/author/Dostoevsky.jpg'
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
     <div className="homePageContainer">
       {/*Carousel section*/}

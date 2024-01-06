@@ -1,4 +1,3 @@
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import HomePage from './pages/HomePage/HomePage'
@@ -7,7 +6,7 @@ import Cart from './components/Cart/Cart'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <>
       <Header />

@@ -6,11 +6,19 @@ import DropDownMenu from '../../components/DropDownMenu/DropDownMenu'
 import Cart from '../../components/Cart/Cart'
 import { productsURL, cartURL } from '../../components/urls'
 
-const Products = () => {
-  const [products, setProducts] = useState([])
-  const [inputValue, setInputValue] = useState('')
-  const [selectedSortOption, setSelectedSortOption] = useState('')
-  const [showCart, setShowCart] = useState(false)
+interface Product {
+  id: string
+  author: string
+  title: string
+  price: number
+  imageURL: string
+}
+
+const Products: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([])
+  const [inputValue, setInputValue] = useState<string>('')
+  const [selectedSortOption, setSelectedSortOption] = useState<string>('')
+  const [showCart, setShowCart] = useState<boolean>(false)
 
   const sortOption = ['LOWER PRICE', 'HIGHER PRICE']
 
@@ -20,23 +28,30 @@ const Products = () => {
       method: 'GET',
     })
       .then(response => response.json())
-      .then(products => {
+      .then((products: Product[]) => {
         setProducts(products)
       })
       .catch(error => console.log(error))
   }, [])
 
   //Add to cart function
-  const handleAddToCart = async (id, author, title, price, imageURL, quantity) => {
+  const handleAddToCart = async (
+    id: string,
+    author: string,
+    title: string,
+    price: number,
+    imageURL: string,
+    quantity: number
+  ) => {
     await fetch(`${cartURL}/${id}/add`, {
       method: 'PUT',
       body: JSON.stringify({
-        id: id,
-        author: author,
-        title: title,
-        price: price,
-        imageURL: imageURL,
-        quantity: quantity,
+        id,
+        author,
+        title,
+        price,
+        imageURL,
+        quantity,
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
@@ -47,10 +62,10 @@ const Products = () => {
   }
 
   //Search/Sort functions
-  const searchBooks = e => setInputValue(e.target.value)
+  const searchBooks = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)
 
   const filteredProducts = useMemo(() => {
-    const filteredBySearchValue = products?.filter(
+    const filteredBySearchValue = products.filter(
       product =>
         product.title.toLowerCase().includes(inputValue.toLowerCase()) ||
         product.author.toLowerCase().includes(inputValue.toLowerCase())

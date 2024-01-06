@@ -1,6 +1,16 @@
+import React from 'react'
 import './ProductCard.css'
 
-const ProductCard = ({ author, title, imageURL, price, id, addToCart }) => {
+interface ProductCardProps {
+  author: string
+  title: string
+  imageURL: string
+  price: number
+  id: string
+  addToCart: () => void
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ author, title, imageURL, price, addToCart }) => {
   return (
     <div className="productCardContainer">
       <div className="titleContainer">

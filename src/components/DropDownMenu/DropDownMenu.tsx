@@ -1,17 +1,26 @@
 import React, { useState } from 'react'
 import './DropDownMenu.css'
 
-const DropDownMenu = ({ options, onSelected, selected, placeholder }) => {
-  const [showDropDown, setShowDropDown] = useState(false)
+interface DropDownMenuProps {
+  options: string[]
+  onSelected: (option: string) => void
+  selected: string
+  placeholder: string
+}
 
-  const selectedOption = options?.find(option => option === selected)
+const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelected, selected, placeholder }) => {
+  const [showDropDown, setShowDropDown] = useState<boolean>(false)
+
+  const selectedOption = options.find(option => option === selected)
 
   const handleToggleDropDown = () => {
     setShowDropDown(!showDropDown)
   }
 
-  const handleChangeSelectedOption = option => {
-    onSelected && onSelected(option)
+  const handleChangeSelectedOption = (option: string) => {
+    if (onSelected) {
+      onSelected(option)
+    }
     setShowDropDown(false)
   }
 
